@@ -12,10 +12,13 @@ Vagrant.configure(2) do |config|
   config.ssh.password = "vagrant"
     
   # Provision
-  config.vm.provision "shell", path: "base.sh"
-  config.vm.provision "shell", path: "solidity.sh"
-  config.vm.provision "shell", path: "tools.sh"
+  ##config.vm.provision "shell", path: "base.sh"
+  ##config.vm.provision "shell", path: "solidity.sh"
+  ##config.vm.provision "shell", path: "tools.sh"
+  config.vm.provision "base", type: "shell", path: "./base.sh"
+  config.vm.provision "solidity", type: "shell", path: "./solidity.sh"
+  config.vm.provision "tools", type: "shell", path: "./tools.sh"
 
   # Shared folder
-  ##config.vm.synced_folder "vagrant/", "/home/vagrant", create: true
+  config.vm.synced_folder "vagrant/", "/home/vagrant", create: true
 end
